@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-class StringRep;
+#include "StringRep.h"
 // This class is used to implement reference counting for String
 // All normal string operations are forwarded to StringRep class
 // This class is only responsible for reference counting part
@@ -17,5 +17,6 @@ class String {
     int referenceCount() const;
 
    private:
+    String(StringRep::Char_p *const pp);
     StringRep *rep;
 };

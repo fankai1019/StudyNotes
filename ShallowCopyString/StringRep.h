@@ -5,6 +5,9 @@ class StringRep {
    public:
     friend class String;
     friend std::ostream& operator<<(std::ostream& os, const StringRep& str);
+
+    typedef char* Char_p;
+
     StringRep();
     StringRep(const StringRep&);
     StringRep(const char* s);
@@ -12,9 +15,10 @@ class StringRep {
     ~StringRep();
 
     int length() const;
-    StringRep operator+(const StringRep& rhs);
+    //    StringRep operator+(const StringRep& rhs);
 
    private:
+    StringRep(Char_p* const pp);
     char* rep;
     int count;
 };

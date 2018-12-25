@@ -1,4 +1,4 @@
-#include "stringrep.h"
+#include "StringRep.h"
 #include <cstring>
 
 StringRep::StringRep() {
@@ -9,6 +9,12 @@ StringRep::StringRep() {
 StringRep::StringRep(const StringRep& s) {
     rep = new char[s.length() + 1];
     ::strcpy(rep, s.rep);
+}
+
+StringRep::StringRep(Char_p* const pp) {
+    rep = *pp;
+    *pp = 0;
+    count = 1;
 }
 
 int StringRep::length() const { return std::strlen(rep); }
@@ -31,15 +37,15 @@ StringRep::StringRep(const char* s) {
     ::strcpy(rep, s);
 }
 
-StringRep StringRep::operator+(const StringRep& rhs) {
-    int size = length() + rhs.length() + 1;
-    char* buf = new char[size];
-    ::strcpy(buf, rep);
-    ::strcat(buf, rhs.rep);
-    StringRep result(buf);
-    delete buf;
-    return result;
-}
+// StringRep StringRep::operator+(const StringRep& rhs) {
+//    int size = length() + rhs.length() + 1;
+//    char* buf = new char[size];
+//    ::strcpy(buf, rep);
+//    ::strcat(buf, rhs.rep);
+//    StringRep result(buf);
+//    delete buf;
+//    return result;
+//}
 
 std::ostream& operator<<(std::ostream& os, const StringRep& str) {
     os << str.rep;

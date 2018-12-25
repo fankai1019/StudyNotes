@@ -1,5 +1,5 @@
 #include <iostream>
-#include "string.h"
+#include "String.h"
 
 int main() {
     std::cout << "The code below: \n"
