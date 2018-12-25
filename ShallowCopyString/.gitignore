@@ -1,0 +1,6 @@
+#default output
+tags
+*.out
+*.out.dSYM/
+*.o
+main
