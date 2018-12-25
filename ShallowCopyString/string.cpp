@@ -35,6 +35,10 @@ String::~String() {
 }
 
 String String::operator+(const String& rhs) {
+    // Here we have 2 memory allocations in StringRep::operator+()
+    // And 1 memory allocation in String(const char* s)
+    // This can be optimized as the temp is a local variable
+    // We can "move" it's value to String
     StringRep temp = *rep + *rhs.rep;
     return String(temp.rep);
 }
